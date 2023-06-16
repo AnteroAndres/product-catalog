@@ -1,0 +1,57 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Item {
+  id: ID!
+  name: String!
+  quantity: Float!
+  quantityUnits: String
+}
+
+type User {
+  id: ID!
+  fullName: String!
+  email: String!
+  roles: [String!]!
+  isActive: Boolean!
+}
+
+type AuthResponse {
+  token: String!
+  user: User!
+}
+
+type Query {
+  items: [Item!]!
+  item(id: ID!): Item!
+  users: [User!]!
+  user(id: ID!): User!
+}
+
+type Mutation {
+  createItem(createItemInput: CreateItemInput!): Item!
+  updateItem(updateItemInput: UpdateItemInput!): Item!
+  removeItem(id: ID!): Item!
+  blockUser(id: ID!): User!
+  signup(signupInput: SignupInput!): AuthResponse!
+}
+
+input CreateItemInput {
+  name: String!
+  quantity: Float!
+  quantityUnits: String
+}
+
+input UpdateItemInput {
+  name: String
+  quantity: Float
+  quantityUnits: String
+  id: ID!
+}
+
+input SignupInput {
+  email: String!
+  fullName: String!
+  password: String!
+}
