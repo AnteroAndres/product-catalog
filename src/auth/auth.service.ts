@@ -35,7 +35,7 @@ export class AuthService {
 
         const {email, password}= loginInput;
         const user = await this.usersService.findOneByEmail(email);
-        if(bcrypt.compareSync(password,user.password)){
+        if(!bcrypt.compareSync(password,user.password)){
             throw new BadRequestException('Email/Password do not match');
         }
         const token = this.getJwtToken(user.id);
